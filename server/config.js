@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/vehicles', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -12,3 +14,8 @@ module.exports = {
   mongoUri: process.env.MONGO_URI || 'mongodb://localhost:27017/vehiclesdb',
   port: process.env.PORT || 3000
 };
+
+// Scripts
+"scripts": {
+  "start": "node app.js"
+}
