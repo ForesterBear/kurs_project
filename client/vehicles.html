@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Транспортні засоби</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>Транспортні засоби</h2>
+    <div id="userPanel"></div>
+    <form id="vehicleForm">
+        <h3>Додати транспортний засіб</h3>
+        <label>Номер:<br><input type="text" name="number" required></label><br>
+        <label>Тип:<br><input type="text" name="type" required></label><br>
+        <label>Марка:<br><input type="text" name="brand" required></label><br>
+        <label>Модель:<br><input type="text" name="model" required></label><br>
+        <label>Рік випуску:<br><input type="number" name="year" required></label><br>
+        <label>Стан:<br><input type="text" name="status" required></label><br>
+        <label>Відповідальна особа:<br><input type="text" name="responsible" required></label><br>
+        <button type="submit">Додати</button>
+    </form>
+    <div>
+        <h3>Список транспортних засобів</h3>
+        <input type="text" id="filterInput" placeholder="Фільтр за маркою, типом, станом...">
+        <table id="vehiclesTable" border="1">
+            <thead>
+                <tr>
+                    <th>Номер</th><th>Тип</th><th>Марка</th><th>Модель</th><th>Рік</th><th>Стан</th><th>Відповідальна особа</th><th>Дії</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <button onclick="logout()">Вийти</button>
+    <script src="js/vehicles.js"></script>
+</body>
+</html>
