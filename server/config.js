@@ -15,7 +15,4 @@ module.exports = {
   port: process.env.PORT || 3000
 };
 
-// Scripts
-"scripts": {
-  "start": "node app.js"
-}
+
