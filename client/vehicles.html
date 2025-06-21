@@ -1,3 +1,37 @@
+    <!-- Модальне вікно для редагування -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <h2>Редагувати транспортний засіб</h2>
+        <form id="editForm">
+          <div class="input-row">
+            <label>Номер:<br><input type="text" name="number" id="editNumber" required readonly></label>
+            <label>Тип:<br>
+              <select name="type" id="editType" required>
+                <option value="Легковий">Легковий</option>
+                <option value="Вантажний">Вантажний</option>
+                <option value="Автобус">Автобус</option>
+                <option value="Спецтехніка">Спецтехніка</option>
+                <option value="Причіп">Причіп</option>
+              </select>
+            </label>
+            <label>Марка:<br><input type="text" name="brand" id="editBrand" required></label>
+            <label>Модель:<br><input type="text" name="model" id="editModel" required></label>
+            <label>Рік випуску:<br><input type="date" name="year" id="editYear" required></label>
+            <label>Стан:<br>
+              <select name="status" id="editStatus" required>
+                <option value="Новий">Новий</option>
+                <option value="Робочий">Робочий</option>
+                <option value="Потребує ремонту">Потребує ремонту</option>
+                <option value="Списаний">Списаний</option>
+              </select>
+            </label>
+            <label>Відповідальна особа:<br><input type="text" name="responsible" id="editResponsible" required></label>
+          </div>
+          <button type="submit" class="btn">Внести зміни</button>
+          <button type="button" class="btn" style="background:#888;margin-left:10px" id="closeEditModal">Скасувати</button>
+        </form>
+      </div>
+    </div>
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -6,32 +40,117 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Транспортні засоби</h2>
-    <div id="userPanel"></div>
-    <form id="vehicleForm">
-        <h3>Додати транспортний засіб</h3>
-        <label>Номер:<br><input type="text" name="number" required></label><br>
-        <label>Тип:<br><input type="text" name="type" required></label><br>
-        <label>Марка:<br><input type="text" name="brand" required></label><br>
-        <label>Модель:<br><input type="text" name="model" required></label><br>
-        <label>Рік випуску:<br><input type="number" name="year" required></label><br>
-        <label>Стан:<br><input type="text" name="status" required></label><br>
-        <label>Відповідальна особа:<br><input type="text" name="responsible" required></label><br>
-        <button type="submit">Додати</button>
-    </form>
-    <div>
-        <h3>Список транспортних засобів</h3>
-        <input type="text" id="filterInput" placeholder="Фільтр за маркою, типом, станом...">
-        <table id="vehiclesTable" border="1">
-            <thead>
-                <tr>
-                    <th>Номер</th><th>Тип</th><th>Марка</th><th>Модель</th><th>Рік</th><th>Стан</th><th>Відповідальна особа</th><th>Дії</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
+    <div class="container" style="padding: 40px 0 0 0; max-width: 1100px; margin: auto;">
+      <h2 style="font-size: 24px; color: #222; margin-bottom: 20px;">Транспортні засоби</h2>
+      <div id="userPanel"></div>
+      <form id="vehicleForm" style="display:none;">
+        <h3 style="margin-bottom: 10px;">Додати транспортний засіб</h3>
+        <div class="input-row">
+          <label>Номер:<br><input type="text" name="number" required title="Введіть номер"></label>
+          <label>Тип:<br>
+            <select name="type" required title="Оберіть тип транспорту">
+              <option value="Легковий">Легковий</option>
+              <option value="Вантажний">Вантажний</option>
+              <option value="Автобус">Автобус</option>
+              <option value="Спецтехніка">Спецтехніка</option>
+              <option value="Причіп">Причіп</option>
+            </select>
+          </label>
+          <label>Марка:<br><input type="text" name="brand" required title="Введіть марку"></label>
+          <label>Модель:<br><input type="text" name="model" required title="Введіть модель"></label>
+          <label>Рік випуску:<br><input type="date" name="year" required title="Оберіть дату випуску"></label>
+          <label>Стан:<br>
+            <select name="status" required title="Оберіть стан">
+              <option value="Новий">Новий</option>
+              <option value="Робочий">Робочий</option>
+              <option value="Потребує ремонту">Потребує ремонту</option>
+              <option value="Списаний">Списаний</option>
+            </select>
+          </label>
+          <label>Відповідальна особа:<br><input type="text" name="responsible" required title="Введіть відповідальну особу"></label>
+        </div>
+        <button type="submit" class="btn" title="Додати транспортний засіб">Додати</button>
+      </form>
+      <div style="margin-top: 40px;">
+        <h3 style="margin: 0 0 10px 0; font-size: 20px;">Список транспортних засобів</h3>
+        <div class="filter-bar">
+          <select id="filterType">
+            <option value="">Усі типи</option>
+            <option value="Легковий">Легковий</option>
+            <option value="Вантажний">Вантажний</option>
+            <option value="Автобус">Автобус</option>
+            <option value="Спецтехніка">Спецтехніка</option>
+            <option value="Причіп">Причіп</option>
+          </select>
+          <select id="filterCondition">
+            <option value="">Усі стани</option>
+            <option value="Новий">Новий</option>
+            <option value="Робочий">Робочий</option>
+            <option value="Потребує ремонту">Потребує ремонту</option>
+            <option value="Списаний">Списаний</option>
+          </select>
+          <input type="text" id="searchInput" placeholder="Пошук за маркою, моделлю, відповідальним...">
+          <button class="btn" type="button" onclick="applyFilters()">Застосувати</button>
+          <button class="btn" style="margin-left:auto;" title="Вийти із системи" onclick="logout()">Вийти</button>
+        </div>
+        <table id="vehiclesTable">
+          <thead>
+            <tr>
+              <th>Номер</th>
+              <th>Тип</th>
+              <th>Марка</th>
+              <th>Модель</th>
+              <th>Рік</th>
+              <th>Стан</th>
+              <th>Відповідальна особа</th>
+              <th id="actionsHeader">Дії</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AA1234BX</td><td>Легковий</td><td>Volkswagen</td><td>Passat</td><td>2018-05-12</td><td>Робочий</td><td>Коваль Ігор</td>
+              <td><button class="btn edit-btn" style="display:none;">Редагувати</button> <button class="btn delete-btn" style="display:none;">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>BB5678CH</td><td>Вантажний</td><td>MAN</td><td>TGS</td><td>2016-09-20</td><td>Потребує ремонту</td><td>Мельник Сергій</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>CC9101DE</td><td>Спецтехніка</td><td>КРАЗ</td><td>6322</td><td>2015-03-15</td><td>Списаний</td><td>Омельчук Олександр</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>DD2345FG</td><td>Автобус</td><td>Богдан</td><td>A092</td><td>2017-07-30</td><td>Новий</td><td>Сидоренко Людмила</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>EE6789HI</td><td>Легковий</td><td>Renault</td><td>Megane</td><td>2020-10-05</td><td>Робочий</td><td>Демченко Павло</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>FF1122JK</td><td>Причіп</td><td>Schmitz</td><td>Cargobull</td><td>2014-04-01</td><td>Списаний</td><td>Шевчук Віталій</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>GG3344LM</td><td>Вантажний</td><td>DAF</td><td>XF</td><td>2019-02-11</td><td>Робочий</td><td>Гнатюк Максим</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>HH5566NO</td><td>Автобус</td><td>Еталон</td><td>T121</td><td>2021-06-17</td><td>Новий</td><td>Романюк Ірина</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>II7788PQ</td><td>Легковий</td><td>Skoda</td><td>Octavia</td><td>2019-12-22</td><td>Потребує ремонту</td><td>Кравченко Юлія</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+            <tr>
+              <td>JJ9900RS</td><td>Спецтехніка</td><td>ЗІЛ</td><td>131</td><td>2013-01-09</td><td>Списаний</td><td>Ткачук Іван</td>
+              <td><button class="btn">Редагувати</button> <button class="btn">Видалити</button></td>
+            </tr>
+          </tbody>
         </table>
+      </div>
     </div>
-    <button onclick="logout()">Вийти</button>
     <script src="js/vehicles.js"></script>
 </body>
 </html>

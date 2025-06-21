@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Реєстрація користувача</h2>
-    <form id="registerForm">
-        <label>Логін:<br><input type="text" name="login" required></label><br>
-        <label>Пароль:<br><input type="password" name="password" required></label><br>
-        <label>ПІБ:<br><input type="text" name="name" required></label><br>
-        <label>Посада:<br><input type="text" name="position" required></label><br>
-        <label>Відділ/підрозділ:<br><input type="text" name="department" required></label><br>
-        <button type="submit">Зареєструватися</button>
-    </form>
-    <div id="registerError" class="error"></div>
+    <div class="container" style="padding-top: 60px;">
+      <h2 style="font-size: 28px; color: #222; margin-bottom: 20px;">Реєстрація користувача</h2>
+      <form id="registerForm">
+        <label>Логін:<br><input type="text" name="login" required title="Введіть логін"></label>
+        <label>Пароль:<br><input type="password" name="password" required title="Введіть пароль"></label>
+        <label>ПІБ:<br><input type="text" name="name" required title="Введіть ПІБ"></label>
+        <label>Посада:<br><input type="text" name="position" required title="Введіть посаду"></label>
+        <label>Відділ/підрозділ:<br><input type="text" name="department" required title="Введіть відділ або підрозділ"></label>
+        <button type="submit" class="btn" title="Натисніть, щоб зареєструватися">Зареєструватися</button>
+      </form>
+      <div id="registerError" class="error"></div>
+    </div>
     <script src="js/register.js"></script>
 </body>
 </html>

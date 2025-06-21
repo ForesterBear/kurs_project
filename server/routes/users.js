@@ -14,4 +14,14 @@ router.put('/role/:id', auth, isAdmin, async (req, res) => {
   }
 });
 
+
+// API: отримати роль поточного користувача
+router.get('/me', auth, async (req, res) => {
+  try {
+    res.json({ role: req.user.role });
+  } catch {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 module.exports = router;

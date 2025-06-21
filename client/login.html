@@ -6,13 +6,23 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Вхід до системи</h2>
-    <form id="loginForm">
-        <label>Логін:<br><input type="text" name="login" required></label><br>
-        <label>Пароль:<br><input type="password" name="password" required></label><br>
-        <button type="submit">Увійти</button>
-    </form>
-    <div id="loginError" class="error"></div>
+    <div class="login-container">
+      <h2>Вхід до системи</h2>
+      <form id="loginForm">
+        <label for="login">Логін:</label>
+        <input type="text" id="login" name="login" required title="Введіть ваш логін">
+
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required title="Введіть пароль">
+
+        <button type="submit" class="btn" title="Увійти до системи">Увійти</button>
+
+        <p class="register-link">
+          Якщо у вас немає акаунту — <a href="register.html">зареєструйтесь</a>
+        </p>
+      </form>
+      <div id="loginError" class="error"></div>
+    </div>
     <script src="js/login.js"></script>
 </body>
 </html>
