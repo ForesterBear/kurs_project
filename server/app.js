@@ -18,6 +18,7 @@ mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: t
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/vehicles', require('./routes/vehicles'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/maintenance', require('./routes/maintenance'));
 
 // Видача статичних файлів (фронтенд)
 app.use(express.static(path.join(__dirname, '../client')));

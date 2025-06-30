@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Журнал обслуговування</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="vehicles.html" class="nav-btn" style="position:absolute; left:32px; top:32px; z-index:10;">Повернутися до транспорту</a>
+  <div class="container">
+    <div class="form-card">
+      <h2 style="text-align:center; margin-bottom: 25px; color:#eaeaea;">Додати запис обслуговування</h2>
+      <form id="maintenanceForm">
+        <div class="input-row">
+          <label>Транспортний засіб:<br>
+            <select name="vehicleId" id="vehicleSelect" required></select>
+          </label>
+          <label>Тип обслуговування:<br>
+            <select name="type" required>
+              <option value="ТО">ТО</option>
+              <option value="Ремонт">Ремонт</option>
+              <option value="Заміна">Заміна</option>
+            </select>
+          </label>
+        </div>
+        <div class="input-row">
+          <label>Дата обслуговування:<br>
+            <input type="date" name="date" required>
+          </label>
+          <label>Пробіг:<br>
+            <input type="number" name="mileage">
+          </label>
+        </div>
+        <div class="input-row">
+          <label>Опис:<br>
+            <input type="text" name="description">
+          </label>
+          <label>Дата наступного ТО:<br>
+            <input type="date" name="nextServiceDate">
+          </label>
+        </div>
+        <button type="submit" class="btn" style="width:100%;margin-top:20px;">Додати запис</button>
+      </form>
+    </div>
+    <hr>
+    <h3>Записи обслуговування</h3>
+    <div class="filter-bar">
+      <select id="filterVehicle"><option value="">Всі</option></select>
+      <input type="date" id="filterFrom" placeholder="З">
+      <input type="date" id="filterTo" placeholder="По">
+      <button type="button" class="btn" onclick="loadLogs()">Застосувати</button>
+    </div>
+    <table id="maintenanceTable">
+      <thead>
+        <tr>
+          <th>Авто</th><th>Дата</th><th>Тип</th><th>Опис</th><th>Пробіг</th><th>Наступне ТО</th><th>Хто вніс</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AA1234BX</td>
+          <td>2024-07-01</td>
+          <td>ТО</td>
+          <td>Плановий техогляд, перевірка гальмівної системи</td>
+          <td>125000</td>
+          <td>2025-07-01</td>
+          <td>admin</td>
+        </tr>
+        <tr>
+          <td>BB5678CH</td>
+          <td>2024-06-15</td>
+          <td>Ремонт</td>
+          <td>Заміна генератора</td>
+          <td>98000</td>
+          <td>2024-12-15</td>
+          <td>admin</td>
+        </tr>
+        <tr>
+          <td>CC9101DE</td>
+          <td>2024-03-22</td>
+          <td>Заміна</td>
+          <td>Заміна акумулятора</td>
+          <td>110500</td>
+          <td>2025-03-22</td>
+          <td>admin</td>
+        </tr>
+        <tr>
+          <td>DD2345FG</td>
+          <td>2023-12-05</td>
+          <td>ТО</td>
+          <td>Перевірка підвіски, змащення шарнірів</td>
+          <td>102300</td>
+          <td>2024-12-05</td>
+          <td>admin</td>
+        </tr>
+        <tr>
+          <td>EE6789HI</td>
+          <td>2024-05-10</td>
+          <td>Ремонт</td>
+          <td>Ремонт гальмівного циліндра</td>
+          <td>117000</td>
+          <td>2024-11-10</td>
+          <td>admin</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="js/journal.js"></script>
+</body>
+</html>

@@ -41,6 +41,7 @@
 </head>
 <body>
     <div class="container" style="padding: 40px 0 0 0; max-width: 1100px; margin: auto;">
+      
       <h2 style="font-size: 24px; color: #222; margin-bottom: 20px;">Транспортні засоби</h2>
       <div id="userPanel"></div>
       <form id="vehicleForm" style="display:none;">
@@ -91,7 +92,8 @@
           </select>
           <input type="text" id="searchInput" placeholder="Пошук за маркою, моделлю, відповідальним...">
           <button class="btn" type="button" onclick="applyFilters()">Застосувати</button>
-          <button class="btn" style="margin-left:auto;" title="Вийти із системи" onclick="logout()">Вийти</button>
+          <a href="journal.html" class="nav-btn" style="margin-left:16px;">Журнал обслуговування</a>
+          <button class="btn" style="margin-left:16px;" title="Вийти із системи" onclick="logout()">Вийти</button>
         </div>
         <table id="vehiclesTable">
           <thead>

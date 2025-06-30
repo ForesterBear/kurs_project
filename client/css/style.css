@@ -1,3 +1,101 @@
+.filter-bar select,
+.filter-bar input[type="date"],
+.filter-bar input[type="text"] {
+  background: #232323;
+  color: #eaeaea;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 10px;
+  font-size: 16px;
+  margin-right: 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.filter-bar select:focus,
+.filter-bar input[type="date"]:focus,
+.filter-bar input[type="text"]:focus {
+  border-color: #007BFF;
+}
+/* Сучасна картка-форми для додавання/редагування */
+.form-card {
+  background: rgba(20, 20, 20, 0.7);
+  max-width: 600px;
+  margin: 40px auto 30px auto;
+  padding: 35px 30px 30px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.form-card h2 {
+  color: #eaeaea;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+.form-card label {
+  color: #eaeaea;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form-card input,
+.form-card select {
+  width: 100%;
+  padding: 12px 10px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #232323;
+  color: #eaeaea;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+.form-card input:focus,
+.form-card select:focus {
+  border-color: #007BFF;
+}
+.form-card .btn {
+  background: #007BFF;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-card .btn:hover {
+  background: #0056b3;
+}
+.input-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 0;
+}
+.input-row label {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+/* Кнопка переходу між вкладками */
+.nav-btn {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.nav-btn:hover {
+  background-color: #0056b3;
+}
 /* Фільтр-бар для транспортних засобів */
 .filter-bar {
   display: flex;
