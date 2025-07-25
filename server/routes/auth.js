@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
     const user = await User.create({ login, password: hash, name, position, department, role });
     res.json({ message: 'Реєстрація успішна' });
   } catch {
-    res.status(500).json({ message: 'Помилка сервера' });
+    res.status(500).json({ message: 'Помилка сервера' }); 
   }
 });
 
